@@ -63,16 +63,40 @@ if (NOT DEFINED MONITOR_ARGS)
     set(MONITOR_ARGS ${SERIAL_DEV} ${BAUD})
 endif ()
 
-set(COMPILER_FLAGS "-Os -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
-set(CMAKE_C_FLAGS "${COMPILER_FLAGS} -std=gnu99 -mcall-prologues -ffunction-sections -fdata-sections" CACHE STRING "")
-set(CMAKE_CXX_FLAGS "${COMPILER_FLAGS} -std=c++0x -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics" CACHE STRING "")
-set(CMAKE_ASM_FLAGS "-x assembler-with-cpp ${COMPILER_FLAGS} " CACHE STRING "")
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
+SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+SET(BUILD_SHARED_LIBRARIES OFF)
+set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
+set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
+
+set(CMAKE_C_FLAGS "-std=gnu11 -mcall-prologues -ffunction-sections -fdata-sections -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_CXX_FLAGS "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_ASM_FLAGS "-x assembler-with-cpp -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
+set(CMAKE_EXE_LINKER_FLAGS "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
+
+set(CMAKE_C_FLAGS_RELEASE "-std=gnu11 -mcall-prologues -ffunction-sections -fdata-sections -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_CXX_FLAGS_RELEASE "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_ASM_FLAGS_RELEASE "-x assembler-with-cpp -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
+
+set(CMAKE_C_FLAGS_DEBUG "-std=gnu11 -mcall-prologues -ffunction-sections -fdata-sections -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_CXX_FLAGS_DEBUG "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_ASM_FLAGS_DEBUG "-x assembler-with-cpp -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
+
+set(CMAKE_C_FLAGS_COVERAGE "-std=gnu11 -mcall-prologues -ffunction-section -fdata-sections -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} --coverage -fprofile-arcs -ftest-coverage -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_CXX_FLAGS_COVERAGE "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} --coverage -fprofile-arcs -ftest-coverage -fdiagnostics-color=always" CACHE STRING "")
+set(CMAKE_ASM_FLAGS_COVERAGE "-x assembler-with-cpp -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
+set(CMAKE_EXE_LINKER_FLAGS_COVERAGE "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
+
+
+
 
 # some definitions that are common
 add_definitions(-DMCU=\"${MCU}\")
 add_definitions(-DF_CPU=${F_CPU})
 add_definitions(-DBAUD=${BAUD})
+add_definitions(-mmcu="${MCU}")
+
 
 # we need a little function to add multiple targets
 function(add_executable_avr NAME)
@@ -81,6 +105,8 @@ function(add_executable_avr NAME)
     else ()
         add_executable(${NAME} ${ARGN})
         set_target_properties(${NAME} PROPERTIES OUTPUT_NAME "${NAME}.elf")
+        set_target_properties(${NAME} PROPERTIES LINK_FLAGS "-static" )
+        
         set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${NAME}.hex;${NAME}.eep;${NAME}.lst")
 
         # generate the .hex file
@@ -165,9 +191,9 @@ function(setup_arduino_core)
         set(ARDUINO_CORE_SRCS ${CORE_SOURCES} CACHE STRING "Arduino core library sources")
 
         # setup the main arduino core target
-        add_library(arduino-core ${ARDUINO_CORE_SRCS})
-        target_include_directories(arduino-core PUBLIC ${ARDUINO_CORES_PATH})
-        target_include_directories(arduino-core PUBLIC ${ARDUINO_VARIANTS_PATH})
+#        add_library(arduino-core ${ARDUINO_CORE_SRCS})
+#        target_include_directories(arduino-core PUBLIC ${ARDUINO_CORES_PATH})
+#        target_include_directories(arduino-core PUBLIC ${ARDUINO_VARIANTS_PATH})
 
         # configure all the additional libraries in the core
         file(GLOB CORE_DIRS ${ARDUINO_LIBRARIES_PATH}/*)
