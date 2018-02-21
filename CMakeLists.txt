@@ -34,11 +34,11 @@ set( CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
 # necessary settings for the chip we use
 set(MCU         atmega328p)
 set(F_CPU       16000000)
-set(BAUD        115200)
+set(BAUD        57600)
 
 # set the programmer and the device to use (arduino, usbasp, ...)
 set(PROGRAMMER  arduino)
-set(SERIAL_DEV  /dev/cu.SLAB_USBtoUART)
+set(SERIAL_DEV  /dev/ttyUSB0)
 
 # Fetch and add googletest to the build
 include(GetGoogleTest)

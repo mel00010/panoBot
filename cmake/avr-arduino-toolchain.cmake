@@ -99,7 +99,7 @@ add_definitions(-mmcu="${MCU}")
 
 
 # we need a little function to add multiple targets
-function(add_executable_avr NAME)
+function(add_executable_avr NAME)       
     if (DEFINED MCU_REQUIRED AND (NOT (MCU STREQUAL "${MCU_REQUIRED}")))
         message(STATUS "Ignoring target ${NAME} (required MCU '${MCU_REQUIRED}' != '${MCU}')")
     else ()
@@ -121,7 +121,8 @@ function(add_executable_avr NAME)
 
         # add a reset command using avrdude (only if it does not yet exist)
         if (NOT TARGET avr-reset)
-            add_custom_target(avr-reset COMMAND ${AVRDUDE} -c${PROGRAMMER} -p${MCU})
+            add_custom_target(avr-reset COMMAND ${AVRDUDE} -c${PROGRAMMER} -p${MCU}
+            USES_TERMINAL)
         endif ()
 
         if (PROGRAMMER STREQUAL "usbasp")
@@ -134,10 +135,12 @@ function(add_executable_avr NAME)
         add_custom_target(
                 ${NAME}-flash
                 COMMAND ${AVRDUDE} ${AVRDUDE_ARGS} -U flash:w:${NAME}.hex
-                DEPENDS ${NAME}.hex)
+                DEPENDS ${NAME}.hex
+                USES_TERMINAL)
         add_custom_target(
                 ${NAME}-monitor
-                COMMAND ${MONITOR} ${MONITOR_ARGS})
+                COMMAND ${MONITOR} ${MONITOR_ARGS}
+                USES_TERMINAL)
     endif ()
 endfunction(add_executable_avr)
 
