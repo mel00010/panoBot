@@ -31,12 +31,15 @@ find_program(OBJDUMP avr-objdump)
 find_program(AVRSIZE avr-size)
 find_program(AVRDUDE avrdude)
 find_program(SCREEN screen)
+find_program(SIMAVR simavr)
+
 
 # toolchain settings
 set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_CXX_COMPILER ${AVRCPP})
-set(CMAKE_C_COMPILER ${AVRC})
-set(CMAKE_ASM_COMPILER ${AVRC})
+set(CMAKE_CXX_COMPILER "${AVRCPP}")
+set(CMAKE_C_COMPILER "${AVRC}")
+set(CMAKE_AR "${AVRAR}")
+set(CMAKE_ASM_COMPILER "${AVRC}")
 
 # Important project paths
 set(BASE_PATH "${${PROJECT_NAME}_SOURCE_DIR}")
@@ -62,6 +65,10 @@ endif ()
 if (NOT DEFINED MONITOR_ARGS)
     set(MONITOR_ARGS ${SERIAL_DEV} ${BAUD})
 endif ()
+if (NOT DEFINED SIMAVR_ARGS)
+    set(SIMAVR_ARGS --gdb --mcu ${MCU} --freq ${F_CPU})
+endif ()
+
 
 SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
 SET(BUILD_SHARED_LIBRARIES OFF)
@@ -78,25 +85,38 @@ set(CMAKE_CXX_FLAGS_RELEASE "-std=c++17 -felide-constructors -fpermissive -fno-e
 set(CMAKE_ASM_FLAGS_RELEASE "-x assembler-with-cpp -O3 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
 set(CMAKE_EXE_LINKER_FLAGS_RELEASE "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
 
-set(CMAKE_C_FLAGS_DEBUG "-std=gnu11 -mcall-prologues -ffunction-sections -fdata-sections -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
-set(CMAKE_CXX_FLAGS_DEBUG "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} -fdiagnostics-color=always" CACHE STRING "")
-set(CMAKE_ASM_FLAGS_DEBUG "-x assembler-with-cpp -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
-set(CMAKE_EXE_LINKER_FLAGS_DEBUG "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
-
-set(CMAKE_C_FLAGS_COVERAGE "-std=gnu11 -mcall-prologues -ffunction-section -fdata-sections -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} --coverage -fprofile-arcs -ftest-coverage -fdiagnostics-color=always" CACHE STRING "")
-set(CMAKE_CXX_FLAGS_COVERAGE "-std=c++17 -felide-constructors -fpermissive -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU} --coverage -fprofile-arcs -ftest-coverage -fdiagnostics-color=always" CACHE STRING "")
-set(CMAKE_ASM_FLAGS_COVERAGE "-x assembler-with-cpp -O0 -Wall -Wno-unknown-pragmas -Wextra -MMD -mmcu=${MCU}" CACHE STRING "")
-set(CMAKE_EXE_LINKER_FLAGS_COVERAGE "-static -Wl,--relax -Wl,--gc-sections -Wl,-u,vfscanf -lscanf_min -Wl,-u,vfprintf -lprintf_min ${EXTRA_LIBS}" CACHE STRING "")
-
-
 
 
 # some definitions that are common
 add_definitions(-DMCU=\"${MCU}\")
 add_definitions(-DF_CPU=${F_CPU})
 add_definitions(-DBAUD=${BAUD})
+add_definitions(-DARDUINO=10806)
+add_definitions(-DARDUINO_AVR_PRO)
+add_definitions(-DARDUINO_ARCH_AVR)
 add_definitions(-mmcu="${MCU}")
+add_compile_options(-gstabs)
+add_compile_options(-funsigned-char)
+add_compile_options(-funsigned-bitfields)
+add_compile_options(-fpack-struct)
+add_compile_options(-fshort-enums)
+add_compile_options(-fno-exceptions)
+add_compile_options(-ffunction-sections)
+add_compile_options(-fdata-sections)
+add_compile_options(-Os)
+add_compile_options(-Wall)
+add_compile_options(-Wno-unknown-pragmas)
+add_compile_options(-Wextra)
+add_compile_options(-MMD)
+add_compile_options(-fdiagnostics-color=always)
 
+add_compile_options(-fuse-linker-plugin)
+#add_compile_options(-flto)
+add_compile_options(-Wl,--gc-sections)
+add_compile_options(-std=c++17)
+add_compile_options(-felide-constructors)
+add_compile_options(-fpermissive)
+add_compile_options(-fno-threadsafe-statics)
 
 # we need a little function to add multiple targets
 function(add_executable_avr NAME)       
@@ -134,13 +154,19 @@ function(add_executable_avr NAME)
         # flash the produces binary
         add_custom_target(
                 ${NAME}-flash
-                COMMAND ${AVRDUDE} ${AVRDUDE_ARGS} -U flash:w:${NAME}.hex
+                COMMAND ${AVRDUDE} ${AVRDUDE_ARGS} -v -U flash:w:${NAME}.hex
                 DEPENDS ${NAME}.hex
                 USES_TERMINAL)
         add_custom_target(
                 ${NAME}-monitor
                 COMMAND ${MONITOR} ${MONITOR_ARGS}
                 USES_TERMINAL)
+                
+        add_custom_target(
+                ${NAME}-simulate
+                COMMAND ${SIMAVR} ${SIMAVR_ARGS} ${NAME}.elf
+                USES_TERMINAL
+                DEPENDS ${NAME})        
     endif ()
 endfunction(add_executable_avr)
 
@@ -194,7 +220,7 @@ function(setup_arduino_core)
         set(ARDUINO_CORE_SRCS ${CORE_SOURCES} CACHE STRING "Arduino core library sources")
 
         # setup the main arduino core target
-#        add_library(arduino-core ${ARDUINO_CORE_SRCS})
+#	    add_library(arduino-core ${ARDUINO_CORE_SRCS})
 #        target_include_directories(arduino-core PUBLIC ${ARDUINO_CORES_PATH})
 #        target_include_directories(arduino-core PUBLIC ${ARDUINO_VARIANTS_PATH})
 

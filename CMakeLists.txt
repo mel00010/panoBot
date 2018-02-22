@@ -34,11 +34,11 @@ set( CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
 # necessary settings for the chip we use
 set(MCU         atmega328p)
 set(F_CPU       16000000)
-set(BAUD        57600)
+set(BAUD        19200)
 
 # set the programmer and the device to use (arduino, usbasp, ...)
-set(PROGRAMMER  arduino)
-set(SERIAL_DEV  /dev/ttyUSB0)
+set(PROGRAMMER  stk500v1)
+set(SERIAL_DEV  /dev/ttyACM0)
 
 # Fetch and add googletest to the build
 include(GetGoogleTest)
@@ -48,8 +48,6 @@ set(panoBot_VERSION_MAJOR 0)
 set(panoBot_VERSION_MINOR 1)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-# if you want to compile Arduino sketches, set this to the Arduino SDK dir (1.6.5)
-set(ARDUINO_SDK_PATH "/usr/share/arduino" CACHE STRING "Arduino SDK Path")
 
 #Subdirectories
 
