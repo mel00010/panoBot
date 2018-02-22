@@ -231,11 +231,47 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1800610481" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
                                 								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.62557297" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.cpp.compiler.option.include.paths.1991366640" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.cpp.compiler.option.include.files.213392685" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include/avr/iom328p.h"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1933469436" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
                             <tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1464360259" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.307885171" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.c.compiler.option.include.paths.1989736340" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include"/>
+                                    								
+                                </option>
+                                								
+                                <option id="gnu.c.compiler.option.include.files.398727483" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
+                                    									
+                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include/avr/iom328p.h"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1558817885" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
@@ -270,6 +306,26 @@
             </storageModule>
             			
             <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+            			
+            <storageModule moduleId="de.marw.cdt.cmake.core.settings">
+                				
+                <linux command="cmake" generator="Ninja" use-default="true">
+                    					
+                    <defs/>
+                    					
+                    <undefs/>
+                    				
+                </linux>
+                				
+                <win32 command="cmake" generator="MinGWMakefiles" use-default="true">
+                    					
+                    <defs/>
+                    					
+                    <undefs/>
+                    				
+                </win32>
+                			
+            </storageModule>
             		
         </cconfiguration>
         	
@@ -307,7 +363,11 @@
             		
         </configuration>
         		
+        <configuration configurationName="Coverage"/>
+        		
         <configuration configurationName="Debug"/>
+        		
+        <configuration configurationName="Release"/>
         	
     </storageModule>
     	
@@ -365,13 +425,11 @@
                 			
             </target>
             			
-            <target name="coverage" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+            <target name="panoBot" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                 				
                 <buildCommand>CMAKE_BUILD_TOOL</buildCommand>
                 				
-                <buildArguments/>
-                				
-                <buildTarget>coverage</buildTarget>
+                <buildTarget>panoBot</buildTarget>
                 				
                 <stopOnError>true</stopOnError>
                 				
@@ -381,13 +439,11 @@
                 			
             </target>
             			
-            <target name="tests" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+            <target name="panoBot-flash" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                 				
                 <buildCommand>CMAKE_BUILD_TOOL</buildCommand>
                 				
-                <buildArguments/>
-                				
-                <buildTarget>tests</buildTarget>
+                <buildTarget>panoBot-flash</buildTarget>
                 				
                 <stopOnError>true</stopOnError>
                 				
@@ -397,13 +453,13 @@
                 			
             </target>
             			
-            <target name="html2LaTeX" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
+            <target name="panoBot-simulate" path="" targetID="org.eclipse.cdt.build.MakeTargetBuilder">
                 				
                 <buildCommand>CMAKE_BUILD_TOOL</buildCommand>
                 				
                 <buildArguments/>
                 				
-                <buildTarget>html2LaTeX</buildTarget>
+                <buildTarget>panoBot-simulate</buildTarget>
                 				
                 <stopOnError>true</stopOnError>
                 				
@@ -427,18 +483,6 @@
             		
         </scannerConfigBuildInfo>
         		
-        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;cdt.managedbuild.tool.gnu.cpp.compiler.base.748715916;cdt.managedbuild.tool.gnu.cpp.compiler.input.1375260427">
-            			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-            		
-        </scannerConfigBuildInfo>
-        		
-        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.957403005;cdt.managedbuild.tool.gnu.c.compiler.input.1418927960">
-            			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-            		
-        </scannerConfigBuildInfo>
-        		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1742267322;cdt.managedbuild.tool.gnu.cpp.compiler.input.342983231">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
@@ -446,12 +490,6 @@
         </scannerConfigBuildInfo>
         		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.;cdt.managedbuild.tool.gnu.c.compiler.base.962977269;cdt.managedbuild.tool.gnu.c.compiler.input.334551916">
-            			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-            		
-        </scannerConfigBuildInfo>
-        		
-        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113.;cdt.managedbuild.tool.gnu.c.compiler.base.311524532;cdt.managedbuild.tool.gnu.c.compiler.input.374629949">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
@@ -476,6 +514,36 @@
         </scannerConfigBuildInfo>
         		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gpp.2099226354;cdt.managedbuild.tool.gnu.cpp.compiler.input.982399886">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;cdt.managedbuild.tool.gnu.cpp.compiler.base.748715916;cdt.managedbuild.tool.gnu.cpp.compiler.input.1375260427">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047.;cdt.managedbuild.tool.gnu.c.compiler.base.1464360259;cdt.managedbuild.tool.gnu.c.compiler.input.1558817885">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;org.eclipse.linuxtools.cdt.autotools.core.toolchain.tool.gcc.957403005;cdt.managedbuild.tool.gnu.c.compiler.input.1418927960">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113.;cdt.managedbuild.tool.gnu.c.compiler.base.311524532;cdt.managedbuild.tool.gnu.c.compiler.input.374629949">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1800610481;cdt.managedbuild.tool.gnu.cpp.compiler.input.1933469436">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
