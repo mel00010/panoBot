@@ -3,16 +3,15 @@ include(avr-arduino-toolchain)
 add_library(Arduino-Core STATIC "")
 target_sources(Arduino-Core
 	PUBLIC
-		${CMAKE_CURRENT_SOURCE_DIR}/avr-libc/sectionname.h
-		${CMAKE_CURRENT_SOURCE_DIR}/avr-libc/stdlib_private.h
 		${CMAKE_CURRENT_SOURCE_DIR}/Arduino.h
 		${CMAKE_CURRENT_SOURCE_DIR}/binary.h
 		${CMAKE_CURRENT_SOURCE_DIR}/Client.h
+		${CMAKE_CURRENT_SOURCE_DIR}/HardwareSerial_private.h
 		${CMAKE_CURRENT_SOURCE_DIR}/HardwareSerial.h
 		${CMAKE_CURRENT_SOURCE_DIR}/IPAddress.h
 		${CMAKE_CURRENT_SOURCE_DIR}/new.h
 		${CMAKE_CURRENT_SOURCE_DIR}/pins_arduino.h
-		${CMAKE_CURRENT_SOURCE_DIR}/Platform.h
+		${CMAKE_CURRENT_SOURCE_DIR}/PluggableUSB.h
 		${CMAKE_CURRENT_SOURCE_DIR}/Print.h
 		${CMAKE_CURRENT_SOURCE_DIR}/Printable.h
 		${CMAKE_CURRENT_SOURCE_DIR}/Server.h
@@ -25,24 +24,28 @@ target_sources(Arduino-Core
 		${CMAKE_CURRENT_SOURCE_DIR}/wiring_private.h
 		${CMAKE_CURRENT_SOURCE_DIR}/WString.h
 	PRIVATE
+		abi.cpp
 		CDC.cpp
-		HardwareSerial.cpp
-		HID.cpp
+		HardwareSerial0.cpp
+		HardwareSerial1.cpp
+		HardwareSerial2.cpp
+		HardwareSerial3.cpp
+		hooks.c
 		IPAddress.cpp
 		new.cpp
+		PluggableUSB.cpp
 		Print.cpp
 		Stream.cpp
 		Tone.cpp
 		USBCore.cpp
+		WInterrupts.c
 		wiring_analog.c
 		wiring_digital.c
 		wiring_pulse.c
+		wiring_pulse.S
 		wiring_shift.c
 		wiring.c
 		WMath.cpp
 		WString.cpp
 )
 target_include_directories(Arduino-Core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-		
-		
-		
