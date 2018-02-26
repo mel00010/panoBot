@@ -1,4 +1,10 @@
 # panoBot
+## Update Sunday February 26th
+
+- Spent most of the week working on hardware, the majority of which is complete
+- Protobuff created for servo movement , camera communication
+- GUI Template done, without buttons, this will be on hold until command line is more refined
+(Zach , Ben , Justin, Mel)
 
 ## Update Sunday February 18th
 
