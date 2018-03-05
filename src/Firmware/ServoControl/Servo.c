@@ -1,3 +1,7 @@
+/*16MHz clock timer */
+#define F_CPU 16000000 
+#define OUTPUTPIN1 PD4
+#define OUTPUTPIN2 PD5
 #include <avr/io.h>
 #include <util/delay.h>
 /*50MHz update , 20 ms update period */
@@ -14,7 +18,20 @@ void delay(){
 }
 
 /* set the prescaler of pins, PWM MODE , Inverted or not*/
-void set_pins(uint8_t preScaler ,  ){
+void initialize_servo(){
+
+	TCCR1A|=(1<<COM1A1)|(1<<COM1B1)|(1<<WGM11);        //NON Inverted PWM
+    TCCR1B|=(1<<WGM13)|(1<<WGM12)|(1<<CS11)|(1<<CS10); //prescaler = 64, mode =  14(FAST PWM)
+    /*Mode 14 TOV1 Flag set at top of wgm */
+
+    /*setting output pins */
+    DDRD |= (1 << OUTPUTPIN1) | (1 << OUTPUTPIN2);
+
+	ICR1 = 4999; /*Fast PMW mode*/
+	/*milisec is about 100 4999/50			*/
+
+	/* compare when OCR1A is a value, we will be at an angle*/
+	OCR1A = 0;
 
 }
 
@@ -23,3 +40,4 @@ us(microsecond) per degree*/
 float get_angle(uint8_t dCycle){
 	return ((dCycle - DCYCLEMIN) * 360) / (DCYCLEMAX - DCYCLEMIN + 1);
 }
+
