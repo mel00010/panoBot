@@ -1,4 +1,24 @@
 # panoBot
+
+## Update Sunday March 4th
+- Update on project status: Due to hardware issues, the project has been reformed... we are now focusing on the firmware (Interfacing the Arduino board with the physical components: Buttons, toggle switch, servo, led display)
+
+- The board as of Friday March 2 has been updated and is ready to undergo final testing. We now have a proper debugger for the board and can begin testing soft/hardware to ensure it will work properly.
+
+- A PID(Proportion integral derivative) loop has been created to ensure servos will move to the appropriate place
+
+- Button/Toggle switches are 90% done, all code is working (abstractly) but delay timings and port/switch numbers will be fine tuned later.
+
+- Button debounce(noise reduction) implemented through software, this may need to be fine tuned, but will update as needed
+
+- Servo timings have been selected, the prescaler , WGM (Wave Generation Mode) type has been selected 
+
+- Physical display has minimal work, but as the deadline moves closer and members finish we will have multiple people working on the display
+
+- Current goals: Finish rough draft of firmware, test with the board and fine tune timings. 
+
+- Update although Google protobuf was originally planned as part of the project, as a way to interact with the panobot through a laptop, this has been put on hold while we ensure the firmware works properly. If adequate time is left over we will resume working on laptop/panobot interactions
+
 ## Update Sunday February 26th
 
 - Spent most of the week working on hardware, the majority of which is complete
