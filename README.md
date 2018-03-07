@@ -40,4 +40,4 @@ We all went through the tutorial for protobuf and made sure it is installed corr
 ## The circuit board has been designed and built.
 
 ## Decided on using GTK+ for GUI, began work on GUI, currently in a rough mockup stage.
-(Zach, Ben, Justin , Mel)
+(Zach, Ben, Justin , Mel, John)
