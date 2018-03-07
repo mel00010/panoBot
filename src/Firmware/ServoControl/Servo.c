@@ -30,6 +30,7 @@ void initialize_servo(){
 	ICR1 = 4999; /*Fast PMW mode*/
 	/*milisec is about 100 4999/50			*/
 
+
 	/* compare when OCR1A is a value, we will be at an angle*/
 	OCR1A = 0;
 
