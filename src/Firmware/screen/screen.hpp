@@ -22,6 +22,9 @@ public:
 	void update(const std::string &input, const size_t x, const size_t y);
 	//erases at a certain position rather than the entire screen
 	void erasePosition(const size_t x, const size_t y);
+	//for sending command?
+	void command(char i);
+	void data(char i);
 
 };
 
