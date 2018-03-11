@@ -3,27 +3,21 @@
 
 class PIDObj{
 	public:
-		double pidCalc(double desiredPos);
+        PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAdjust);  
+		int pidCalc(double desiredPos, double position);
 	private:
-		double integralTermH();
-		double derivativeTermH();
-		double proportionalTermH();
+		int integralTerm();
+		int derivativeTerm();
+		int proportionalTerm();
 
-		double integralTermV();
-		double derivativeTermV();
-		double proportionalTermV();
-
-		double lastErrorV = 0;
-		double lastErrorH = 0;
-		double errorV;
-		double errorH;
-		double cP;
-		double cI;
-		double cD;
-        double integralActiveZone;
-        double errorSH;
-        double errorSV;
-        double maxIntAdjust;
+		int lastError = 0;
+		int error;
+		int cP;
+		int cI;
+		int cD;
+        int integralActiveZone;
+        int errorS = 0;
+        int maxIntAdjust;
 };
 
 #endif
