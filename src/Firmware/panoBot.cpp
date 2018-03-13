@@ -18,27 +18,20 @@
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-#ifndef __AVR_ATmega328P__
-#define __AVR_ATmega328P__
-#endif/*__AVR_ATmega328P__*/
-
-
-#include <Setup/Setup.hpp>
-
-
+#include <stddef.h>
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 
+#include <Setup/Setup.hpp>
+#include <Camera/Camera.hpp>
 
-int main (void)
-{
-
+int main(void) {
 	Setup::setup();
+
 	/* The Big Loop */
-	for(;;) {
-		PORTB |= 0b00100000; // Turn PB5 on
-		_delay_ms(1000);
-		PORTB &= 0b11011111; // Turn PB5 off
-		_delay_ms(1000);
+	for (;;) {
+		Camera::takePhoto();
+		Camera::focus();
 	}
 }

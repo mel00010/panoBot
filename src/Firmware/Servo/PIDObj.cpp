@@ -1,4 +1,4 @@
-#include "PIDObj.hpp" 
+#include "../Servo/PIDObj.hpp"
 
 PIDObj::PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAdjust){
     cP = tcP;
