@@ -32,7 +32,7 @@ Display::~Display() {
 
 }
 
-void command(char i) {
+void Display::command(char i) {
 //	C_S = 0; //chip select LOW - active
 //	P1 = i; //data on port
 //	D_C = 0; //data/command select LOW - write
@@ -42,7 +42,7 @@ void command(char i) {
 //	E = 0; //enable LOW - data latched
 }
 
-void data(char i) {
+void Display::data(char i) {
 //	C_S = 0; //chip select LOW
 //	P1 = i; //data on port
 //	D_C = 1; //data/command s

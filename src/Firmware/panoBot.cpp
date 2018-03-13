@@ -34,8 +34,19 @@ int main(void) {
 		display->write("Starting panorama...");
 		delay_ms(500);
 
-		Camera::takePhoto();
+		display->erase();
+		display->write("Focusing camera...");
 		Camera::focus();
+
+		delay_ms(50);
+
+		display->erase();
+		display->write("Taking photo 1 / 5...");
+		Camera::takePhoto();
+
+		delay_ms(50);
+
+
 
 
 	}
