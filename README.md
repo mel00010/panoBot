@@ -1,5 +1,15 @@
 # panoBot
 
+## Update Monday March 12th
+- Entire directory structure refactored to add some consistency
+- Wrote Camera library to control the camera
+- Started work on writing main()
+- Wrote numerous utility functions as the avr-g++ compiler does not provide any of the C++ standard library headers
+- Expanded and updated build system
+- Modified build process to enable debugging, and create a target with debugging symbols included.  
+
+
+
 ## Update Sunday March 11th
 - Servo controls for the most part figured out, still need to fine tune timings with hardwarde, but servos now have the ability to update/calculate their angles
 
