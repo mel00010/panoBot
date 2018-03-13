@@ -6,10 +6,19 @@
 #include <avr/io.h>
 
 char buttonPressed(int buttonNumber, unsigned char boardPin, unsigned char boardPort, int stateCheck);
+char startProgram(unsigned char boardPin, unsigned char boardPort);
 
 char Pressed[buttonNumber];
 int pressedCheck[buttonNumber]; //Measure button press cofidence
 int releasedCheck[buttonNumber]; //Measure button release confidence
+
+
+char startProgram(unsigned char boardPin, unsigned char boardPort){
+    if (startPin ==0{  //( int buttonNumber, unsigned char boardPin, boardPort , stateCheck )
+                PORTB ^= (1 << PINB3 ) /*This is a toggle function*/    // PORTB is the startPort we need to look at PINB3 is the pin needing to be changed from 0 to 1  we need to know which in and port still 
+            }
+}
+
 
 char buttonPressed(int buttonNumber, unsigned char boardPin, unsigned char boardPort, int stateCheck){
     if (bit_is_clear(boardPin, boardPort)){
@@ -39,3 +48,5 @@ return 0;
 }
 
 #endif
+
+char interrupt ()

@@ -1,5 +1,16 @@
 # panoBot
 
+## Update Sunday March 11th
+- Servo controls for the most part figured out, still need to fine tune timings with hardwarde, but servos now have the ability to update/calculate their angles
+
+- Buttons are finished may need to fine tune the debounce timings as needed, but outputting the correct information
+
+- Screen code started, menu logic is still needed.
+
+- Hardware debugger has arrived and finishing up final hardware configuration, planning on fine tuning with the hardware the upcomming week
+
+- certain moving parts/cases are needing to be printed, planning on doing this Monday 03/12
+
 ## Update Sunday March 4th
 - Update on project status: Due to hardware issues, the project has been reformed... we are now focusing on the firmware (Interfacing the Arduino board with the physical components: Buttons, toggle switch, servo, led display)
 

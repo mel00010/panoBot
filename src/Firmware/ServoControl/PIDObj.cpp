@@ -24,6 +24,9 @@ int PIDObj::pidCalc(double desiredAngle, double angle){
         sumH = -200;
     }
 
+    if(error = 0){
+        sumH = 0;
+    }
     return sumH;
 }
 
