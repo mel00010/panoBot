@@ -20,15 +20,47 @@
 
 #include "Setup.hpp"
 
-#include "SetupPins.hpp"
-#include "SetupSerial.hpp"
+#include <avr/io.h>
+#include <avr/interrupt.h>
+//#include <util/setbaud.h>
+#include <stdio.h>
+
 
 namespace Setup {
 
-void setup() {
-	setupPins();
-	setupSerial();
+#define BAUD_PRESCALE (((( F_CPU / 16) + ( BAUD / 2) ) / ( BAUD ) ) - 1)
 
+void USART_Init()
+{
+//	UBRR0L = (uint8_t)(BAUD_PRESCALE & 0xff);
+//	UBRR0H = (uint8_t)(BAUD_PRESCALE >> 8);
+//	UCSR0B =
+		/* interrupt on receive */
+//		_BV(RXCIE0) |
+		/* interrupt on data read register empty (so we can transmit) */
+//		_BV(UDRIE0) |
+		/* enable read */
+//		_BV(RXEN0)  |
+		/* enable transmit */
+//		_BV(TXEN0);
+//	UCSR0C =
+//		/* no parity bit */
+//		~_BV(UPM01)   &
+//		~_BV(UPM00)   &
+//		/* asyncrounous USART */
+//		~_BV(UMSEL01) &
+//		~_BV(UMSEL00) &
+//		/* one stop bit */
+//		~_BV(USBS0)   &
+//		/* 8 data bits */
+//		_BV(UCSZ01)   |
+//		_BV(UCSZ00);
+}
+
+
+void setup() {
+	DDRH |= _BV(PH1); // Set 16 (PH1) to output
+	DDRH |= _BV(PH0); // Set 17 (PH0) to output
 }
 
 } /* namespace Setup */

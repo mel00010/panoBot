@@ -18,9 +18,15 @@
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
+#ifndef SRC_FIRMWARE_SETUP_SETUP_HPP_
+#define SRC_FIRMWARE_SETUP_SETUP_HPP_
+
 namespace Setup {
 
 void setup();
 
 } /* namespace Setup */
+
+#endif /* SRC_FIRMWARE_SETUP_SETUP_HPP_ */
+
 
