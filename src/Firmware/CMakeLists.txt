@@ -7,13 +7,10 @@ target_link_libraries(panoBot
 		Setup
 		Camera
 		Display
-#		Connection
-#		Util
+		Util
 		m # Math library
 		c # C standard library
 )
-
-include_directories(${CMAKE_BINARY_DIR}/avr-uart-src)
 
 add_subdirectory(Camera)
 add_subdirectory(Display)

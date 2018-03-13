@@ -18,20 +18,25 @@
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
 
-#include <stddef.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include <util/delay.h>
-
-#include <Setup/Setup.hpp>
 #include <Camera/Camera.hpp>
+#include <Display/Display.hpp>
+#include <Setup/Setup.hpp>
+#include <Util/delay.hpp>
+
 
 int main(void) {
-	Setup::setup();
+	Display::Display* display;
+
+	Setup::setup(display);
 
 	/* The Big Loop */
 	for (;;) {
+		display->write("Starting panorama...");
+		delay_ms(500);
+
 		Camera::takePhoto();
 		Camera::focus();
+
+
 	}
 }
