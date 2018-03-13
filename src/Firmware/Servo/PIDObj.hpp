@@ -4,7 +4,8 @@
 class PIDObj{
 	public:
         PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAdjust);  
-		int pidCalc(double desiredPos, double position);
+		int pidCalc(int desiredPos, int position);
+        int angleToServoUnit(int angle, int dMax, int dMin, int unitsPerCircle);
 	private:
 		int integralTerm();
 		int derivativeTerm();
