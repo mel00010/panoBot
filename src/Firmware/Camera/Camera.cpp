@@ -23,19 +23,19 @@
 #include <stddef.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
+#include "../Util/delay.hpp"
 
 namespace Camera {
 
 void takePhoto() {
 	PORTH |= _BV(PH0);
-	_delay_us(1000000 / 16);
+	delay_s(1);
 	PORTH &= ~_BV(PH0);
 }
 
 void focus() {
 	PORTH |= _BV(PH1);
-	_delay_us(1000000 / 16);
+	delay_s(1);
 	PORTH &= ~_BV(PH1);
 }
 

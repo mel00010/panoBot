@@ -8,3 +8,8 @@ target_sources(Camera
 	PRIVATE
 		Camera.cpp
 )
+
+target_link_libraries(Camera
+	PUBLIC
+		Util
+)
