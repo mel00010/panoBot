@@ -1,31 +1,54 @@
 #include "PIDObj.hpp" 
 
-double PIDObj::pidCalc(double desiredPos){
+PIDObj::PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAdjust){
+    cP = tcP;
+    cI = tcI;
+    cD = tcD;
 
+    integralActiveZone = tintegralActiveZone;
+    maxIntAdjust = tmaxIntAdjust;
 }
 
-double PIDObj::proportionalTermH(){
-	return errorH*cP;
+
+int PIDObj::pidCalc(double desiredAngle, double angle){
+    error = desiredAngle - angle; 
+
+    int sumH = proportionalTerm() + integralTerm() + derivativeTerm();  
+
+    lastError = error;
+    
+    if(sumH > 200){
+        sumH = 200;
+    }
+    if(sumH < -200){
+        sumH = -200;
+    }
+
+    return sumH;
+}
+
+int PIDObj::proportionalTerm(){
+	return error*cP;
 }
 
 //At this point, integral active zone is basically pseduo code. The point
 //is to have a zone in which we'll bother adjusting.
-double PIDObj::integralTermH(){
-    if(errorH < (integralActiveZone)){
-        errorSH += errorH;
+int PIDObj::integralTerm(){
+    if(error < (integralActiveZone)){
+        errorS += error;
     }
     else{
-        errorSH = 0;
+        errorS = 0;
     }
     //MaxIntAdjust is another stand in. We don't want to increase
     //the integral term forever.
-    if(errorSH > maxIntAdjust){
-        errorSH = maxIntAdjust;
+    if(errorS > maxIntAdjust){
+        errorS = maxIntAdjust;
     }
 
-    return errorSH * cI;
+    return errorS * cI;
 }
 
-double PIDObj::derivativeTermH(){
-	return (errorH -lastErrorH)*cD;
+int PIDObj::derivativeTerm(){
+	return (error -lastError)*cD;
 }
