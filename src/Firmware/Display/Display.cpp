@@ -25,10 +25,14 @@
 namespace Display {
 
 Display::Display() {
+	//turns the display on, but not cursor or blink
+	command(0b00001100);
 
 }
 
 Display::~Display() {
+	//turns the display off, and cursor or blink off if they were on
+	command(0b00001000);
 
 }
 
@@ -51,11 +55,13 @@ void Display::data(char i) {
 //	delayms(1); //delay
 //	E = 0; //enable LOW - data latched
 }
-//erases the Display
+//clears the Display
 void Display::erase() {
-	int i;
-	command(0x01); //clear display
-	command(0x02); //return home
+	//clears the display. Datasheet defines as:
+	//Write "20H" to DDRAM and set DDRAM address to "00H" from AC.
+	command(0b0000000001);
+
+	
 
 }
 
@@ -64,6 +70,8 @@ void Display::write(const char* input) {
 }
 
 void Display::moveCursor(const Coordinate coordinate) {
+	//moves cursor right
+	command(0b00000101);
 
 }
 
