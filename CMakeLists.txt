@@ -32,17 +32,18 @@ set( CMAKE_BUILD_TYPE "${CMAKE_BUILD_TYPE}" CACHE STRING
     FORCE )
 
 # necessary settings for the chip we use
-set(MCU         atmega328p)
-set(F_CPU       16000000)
+set(MCU         atmega2560)
+set(F_CPU       16000000L)
 set(BAUD        19200)
 
-# set the programmer and the device to use (arduino, usbasp, ...)
-set(PROGRAMMER  stk500v1)
 set(SERIAL_DEV  /dev/ttyACM0)
+
+# set the programmer and the device to use (arduino, usbasp, ...)
+#set(PROGRAMMER  arduino)
+set(PROGRAMMER  atmelice_isp)
 
 # Fetch and add googletest to the build
 include(GetGoogleTest)
-
 # The version number.
 set(panoBot_VERSION_MAJOR 0)
 set(panoBot_VERSION_MINOR 1)

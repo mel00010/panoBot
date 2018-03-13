@@ -47,11 +47,23 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1742267322" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
                                 								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1729809942" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.342983231" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
                             <tool id="cdt.managedbuild.tool.gnu.c.compiler.base.962977269" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.1554531761" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.334551916" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
@@ -145,11 +157,23 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1832373010" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
                                 								
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.160243858" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2078829798" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
                             <tool id="cdt.managedbuild.tool.gnu.c.compiler.base.280910873" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+                                								
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.649314631" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.828269532" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
@@ -221,67 +245,63 @@
                     					
                     <folderInfo id="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047." name="/" resourcePath="">
                         						
-                        <toolChain id="cdt.managedbuild.toolchain.gnu.base.2133728917" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
+                        <toolChain id="cdt.managedbuild.toolchain.gnu.base.380465772" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.844754832" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.1428803223" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
                             							
-                            <builder buildPath="/panoBot/build/Debug" id="de.marw.cdt.cmake.core.genscriptbuilder.2102339389" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder (portable)" superClass="de.marw.cdt.cmake.core.genscriptbuilder"/>
+                            <builder autoBuildTarget="all" buildPath="/panoBot/build/Release" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="de.marw.cdt.cmake.core.genscriptbuilder.940843870" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder (portable)" superClass="de.marw.cdt.cmake.core.genscriptbuilder"/>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.archiver.base.1064143034" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
+                            <tool id="cdt.managedbuild.tool.gnu.archiver.base.1746545841" name="GCC Archiver" superClass="cdt.managedbuild.tool.gnu.archiver.base"/>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.1800610481" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
+                            <tool id="cdt.managedbuild.tool.gnu.cpp.compiler.base.831883385" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.base">
                                 								
-                                <option id="gnu.cpp.compiler.option.preprocessor.def.62557297" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
-                                    								
-                                </option>
-                                								
-                                <option id="gnu.cpp.compiler.option.include.paths.1991366640" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                <option id="gnu.cpp.compiler.option.include.paths.2000755032" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
                                     									
                                     <listOptionValue builtIn="false" value="/usr/lib/avr/include"/>
                                     								
                                 </option>
                                 								
-                                <option id="gnu.cpp.compiler.option.include.files.213392685" superClass="gnu.cpp.compiler.option.include.files" valueType="includeFiles">
+                                <option id="gnu.cpp.compiler.option.preprocessor.def.1726342390" name="Defined symbols (-D)" superClass="gnu.cpp.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
-                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include/avr/iom328p.h"/>
+                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="F_CPU=16000000"/>
                                     								
                                 </option>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1933469436" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2093820013" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.c.compiler.base.1464360259" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
+                            <tool id="cdt.managedbuild.tool.gnu.c.compiler.base.871564580" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.base">
                                 								
-                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.307885171" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
-                                    									
-                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
-                                    								
-                                </option>
-                                								
-                                <option id="gnu.c.compiler.option.include.paths.1989736340" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+                                <option id="gnu.c.compiler.option.include.paths.79455441" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
                                     									
                                     <listOptionValue builtIn="false" value="/usr/lib/avr/include"/>
                                     								
                                 </option>
                                 								
-                                <option id="gnu.c.compiler.option.include.files.398727483" superClass="gnu.c.compiler.option.include.files" valueType="includeFiles">
+                                <option id="gnu.c.compiler.option.preprocessor.def.symbols.2086764067" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" useByScannerDiscovery="false" valueType="definedSymbols">
                                     									
-                                    <listOptionValue builtIn="false" value="/usr/lib/avr/include/avr/iom328p.h"/>
+                                    <listOptionValue builtIn="false" value="__AVR_ATmega328P__=TRUE"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="BAUD=19200"/>
+                                    									
+                                    <listOptionValue builtIn="false" value="F_CPU=16000000"/>
                                     								
                                 </option>
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1558817885" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2140066923" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.c.linker.base.1832591687" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
+                            <tool id="cdt.managedbuild.tool.gnu.c.linker.base.692093444" name="GCC C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.base"/>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.237548888" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
+                            <tool id="cdt.managedbuild.tool.gnu.cpp.linker.base.1320473078" name="GCC C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.base">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.34161283" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
+                                <inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.269385060" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
                                     									
                                     <additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
                                     									
@@ -291,9 +311,9 @@
                                 							
                             </tool>
                             							
-                            <tool id="cdt.managedbuild.tool.gnu.assembler.base.1565211635" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
+                            <tool id="cdt.managedbuild.tool.gnu.assembler.base.735343094" name="GCC Assembler" superClass="cdt.managedbuild.tool.gnu.assembler.base">
                                 								
-                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.398592238" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
+                                <inputType id="cdt.managedbuild.tool.gnu.assembler.input.902839005" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							
                             </tool>
                             						
@@ -326,6 +346,8 @@
                 </win32>
                 			
             </storageModule>
+            			
+            <storageModule moduleId="packages"/>
             		
         </cconfiguration>
         	
@@ -485,13 +507,13 @@
         		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1742267322;cdt.managedbuild.tool.gnu.cpp.compiler.input.342983231">
             			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile"/>
             		
         </scannerConfigBuildInfo>
         		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.;cdt.managedbuild.tool.gnu.c.compiler.base.962977269;cdt.managedbuild.tool.gnu.c.compiler.input.334551916">
             			
-            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.make.core.GCCStandardMakePerFileProfile"/>
             		
         </scannerConfigBuildInfo>
         		
@@ -519,6 +541,18 @@
             		
         </scannerConfigBuildInfo>
         		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047.;cdt.managedbuild.tool.gnu.cpp.compiler.base.831883385;cdt.managedbuild.tool.gnu.cpp.compiler.input.2093820013">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.420753155;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.420753155.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1832373010;cdt.managedbuild.tool.gnu.cpp.compiler.input.2078829798">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.632464030.;cdt.managedbuild.tool.gnu.cpp.compiler.base.748715916;cdt.managedbuild.tool.gnu.cpp.compiler.input.1375260427">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
@@ -537,6 +571,12 @@
             		
         </scannerConfigBuildInfo>
         		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.420753155;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.420753155.;cdt.managedbuild.tool.gnu.c.compiler.base.280910873;cdt.managedbuild.tool.gnu.c.compiler.input.828269532">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.339869113.;cdt.managedbuild.tool.gnu.c.compiler.base.311524532;cdt.managedbuild.tool.gnu.c.compiler.input.374629949">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
@@ -544,6 +584,12 @@
         </scannerConfigBuildInfo>
         		
         <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047.;cdt.managedbuild.tool.gnu.cpp.compiler.base.1800610481;cdt.managedbuild.tool.gnu.cpp.compiler.input.1933469436">
+            			
+            <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+            		
+        </scannerConfigBuildInfo>
+        		
+        <scannerConfigBuildInfo instanceId="org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047;org.eclipse.linuxtools.cdt.autotools.core.configuration.build.debug.890552941.668818047.;cdt.managedbuild.tool.gnu.c.compiler.base.871564580;cdt.managedbuild.tool.gnu.c.compiler.input.2140066923">
             			
             <autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
             		
