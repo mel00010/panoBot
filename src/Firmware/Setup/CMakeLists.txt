@@ -10,4 +10,6 @@ target_sources(Setup
 
 target_link_libraries(Setup
 	PUBLIC
+		Display
+		Util
 )

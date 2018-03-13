@@ -21,9 +21,11 @@
 #ifndef SRC_FIRMWARE_SETUP_SETUP_HPP_
 #define SRC_FIRMWARE_SETUP_SETUP_HPP_
 
+#include "../Display/Display.hpp"
+
 namespace Setup {
 
-void setup();
+void setup(Display::Display* display);
 
 } /* namespace Setup */
 
