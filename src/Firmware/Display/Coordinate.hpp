@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Display.hpp
+ * Coordinate.hpp
  * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panoBot.
@@ -17,38 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
-
-#ifndef SRC_FIRMWARE_DISPLAY_DISPLAY_HPP_
-#define SRC_FIRMWARE_DISPLAY_DISPLAY_HPP_
+#ifndef SRC_FIRMWARE_DISPLAY_COORDINATE_HPP_
+#define SRC_FIRMWARE_DISPLAY_COORDINATE_HPP_
 
 #include <stddef.h>
 
-#include "Coordinate.hpp"
-
 namespace Display {
 
-class Display {
+class Coordinate {
 	public:
-		Display();
-		~Display();
-		//erases entire display
-		void erase();
-		//writes a string to display
-		void write(const char* input);
-		//position to write to in "display"
-		void moveCursor(const Coordinate coordinate);
-		//gets current cursor position
-		Coordinate getCursorPosition();
-		//overwriting in a certain position
-		void update(const char* input, const Coordinate coordinate);
-		//erases at a certain position rather than the entire screen
-		void erasePosition(const Coordinate coordinate);
-		//for sending command?
-		void command(char i);
-		void data(char i);
-
+		size_t x;
+		size_t y;
 };
 
 } /* namespace Display */
 
-#endif /* SRC_FIRMWARE_DISPLAY_DISPLAY_HPP_ */
+#endif /* SRC_FIRMWARE_DISPLAY_COORDINATE_HPP_ */
