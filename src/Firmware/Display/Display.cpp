@@ -135,32 +135,32 @@ void Display::moveCursor(const Coordinate coordinate) {
 	size_t x = cursor.x;
 	//which line
 	size_t y = cursor.y;
-	if (cursor.y == 2){
+	if (cursor.y == 2) {
 		command(0b00000101); //2nd line display shift enable
 		command(0b00000111); //display shift "right"(down)
 
-		for(int i = 0; i < x; i++){
+		for (int i = 0; i < x; i++) {
 			command(0b00000101); // cursor shift right
 		}
 		command(0b0000010000); //2nd line display shift disable
 	}
 
-	if (coordinate.y == 3){
+	if (coordinate.y == 3) {
 		command(0b0000010100); //3rd line display shift enable
 		command(0b00000111); //display shift "right"(down)
 
-		for(int i = 0; i < x; i++){
+		for (int i = 0; i < x; i++) {
 			command(0b00000101); // moves cursor right
 		}
 
 		command(0b0000010100); //3rd line display shift disable
 
 	}
-	if (coordinate.y == 4){
+	if (coordinate.y == 4) {
 		command(0b0000011000); //3rd line display shift enable
 		command(0b00000111); //display shift "right"(down)
 
-		for(int i = 0; i < x; i++){
+		for (int i = 0; i < x; i++) {
 			command(0b00000101); // moves cursor right
 		}
 
@@ -168,22 +168,17 @@ void Display::moveCursor(const Coordinate coordinate) {
 
 	}
 
-
-
-
 	// //moves cursor left
 	// command(0b00000100);
 
 	// //moves cursor right
 	// command(0b00000101);
 
-
-
 }
 
 Coordinate Display::getCursorPosition() {
 	//Coordinate object cursor is already defined
-	return cursor
+	return cursor;
 
 }
 
@@ -192,10 +187,6 @@ void Display::update(const char* input, const Coordinate coordinate) {
 	moveCursor(coordinate);
 	//write, starting at position cursor has moved to.
 	write(input);
-
-
-
-
 
 }
 
