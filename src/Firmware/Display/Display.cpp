@@ -21,10 +21,10 @@
 #include "Display.hpp"
 
 #include <avr/io.h>
+#include <string.h>
 
 #include "../Util/Pair.hpp"
 #include "../Util/delay.hpp"
-
 
 #define DC_LOW()	PORTB &= ~_BV(PB1)
 #define DC_HIGH()	PORTB |=  _BV(PB1)
@@ -47,7 +47,41 @@ Display::Display() {
 	DATA_PINS = 0x00;
 	//turns the display on, but not cursor or blink	PORTL = 0xFF;
 
-	command(0b00001111);
+//	command(0b00001111);
+//	command(0b00000011);
+//	command(0b00000100);
+
+	command(0x2A);	//function set (extended command set)
+	command(0x71);	//function selection A
+	data(0x00);		// disable internal VDD regulator (2.8V I/O). data(0x5C) = enable regulator (5V I/O)
+	command(0x28);	//function set (fundamental command set)
+	command(0x08);	//display off, cursor off, blink off
+	command(0x2A);	//function set (extended command set)
+	command(0x79);	//OLED command set enabled
+	command(0xD5);	//set display clock divide ratio/oscillator frequency
+	command(0x70);	//set display clock divide ratio/oscillator frequency
+	command(0x78);	//OLED command set disabled
+	command(0x09);	//extended function set (4-lines)
+	command(0x06);	//COM SEG direction
+	command(0x72);	//function selection B
+	data(0x00);   	//ROM CGRAM selection
+	command(0x2A);	//function set (extended command set)
+	command(0x79);	//OLED command set enabled
+	command(0xDA);	//set SEG pins hardware configuration
+	command(0x10);	//set SEG pins hardware configuration
+	command(0xDC);	//function selection C
+	command(0x00);	//function selection C
+	command(0x81);	//set contrast control
+	command(0x7F);	//set contrast control
+	command(0xD9);	//set phase length
+	command(0xF1);	//set phase length
+	command(0xDB);	//set VCOMH deselect level
+	command(0x40);	//set VCOMH deselect level
+	command(0x78);	//OLED command set disabled
+	command(0x28);	//function set (fundamental command set)
+	command(0x01);	//clear display
+	command(0x80);	//set DDRAM address to 0x00
+	command(0x0C);	//display ON
 
 }
 
@@ -61,34 +95,23 @@ Display::~Display() {
 void Display::command(char command_bits) {
 	DC_LOW();
 	RW_LOW();
-
-	CS_LOW();
-	E_HIGH();
-
 	DATA_PINS = command_bits;
-
-	delay_us(100);
+	CS_LOW();
+	_delay_us(100);
+	E_HIGH();
 	E_LOW();
 	CS_HIGH();
-
-	DATA_PINS = 0x00;
 }
-
 
 void Display::data(char data_bits) {
 	DC_HIGH();
 	RW_LOW();
-
-	CS_LOW();
-	E_HIGH();
-
 	DATA_PINS = data_bits;
-
-	delay_us(100);
+	CS_LOW();
+	_delay_us(100);
+	E_HIGH();
 	E_LOW();
 	CS_HIGH();
-
-	DATA_PINS = 0x00;
 }
 //clears the Display
 void Display::erase() {
@@ -99,37 +122,22 @@ void Display::erase() {
 }
 
 void Display::write(const char* input) {
-
-	//size of input we desire to write
-	int insize = strlen(input);
-
-	//iterates through each character to write to a screen "block"
-	for(int i = 0; i < insize; i++){
-		//individual character to write to a "block" position on the board.
-		char to_write = input[i];
-		//calls data, which takes an actual character, i.e. "g", and writes it to the current position on the board.
-		data(to_write);
-		//moves to next position automatically when writing, thus Display::moveCursor does not need to be called
+	size_t len = strlen(input); // Get the size of the string ahead of the loop so that strlen is not repeatedly called.
+	for (size_t i = 0; i < len; i++) { 	//iterates through each character in the string
+		data(input[i]);		//calls data, which writes the character to the screen.
 	}
-
-
-
 }
 
 void Display::moveCursor(const Coordinate coordinate) {
 	//moves cursor left
 	command(0b00000100);
 
-
 	//moves cursor right
 	command(0b00000101);
-
-	
 
 }
 
 Coordinate Display::getCursorPosition() {
-	
 
 }
 
