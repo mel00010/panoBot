@@ -10,7 +10,7 @@ PIDObj::PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAd
 }
 
 
-int PIDObj::pidCalc(double desiredAngle, double angle){
+int PIDObj::pidCalc(int desiredAngle, int angle){
     error = desiredAngle - angle; 
 
     int sumH = proportionalTerm() + integralTerm() + derivativeTerm();  
@@ -54,4 +54,9 @@ int PIDObj::integralTerm(){
 
 int PIDObj::derivativeTerm(){
 	return (error -lastError)*cD;
+}
+
+int PIDObj::angleToServoUnit(int angle, int dMax, int dMin, int unitsPerCircle){
+    int dCycle = (angle*(dMax - dMin + 1) + dMin*unitsPerCircle)/unitsPerCircle;
+    return dCycle;
 }
