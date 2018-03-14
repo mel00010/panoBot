@@ -25,29 +25,25 @@
 
 
 int main(void) {
-	Display::Display* display;
+	Display::Display* display = nullptr;
 
 	Setup::setup(display);
 
 	/* The Big Loop */
 	for (;;) {
 		display->write("Starting panorama...");
-		delay_ms(500);
+		delay_s(1);
 
 		display->erase();
 		display->write("Focusing camera...");
 		Camera::focus();
 
-		delay_ms(50);
+		delay_s(1);
 
 		display->erase();
 		display->write("Taking photo 1 / 5...");
 		Camera::takePhoto();
 
-		delay_ms(50);
-
-
-
-
+		delay_s(1);
 	}
 }
