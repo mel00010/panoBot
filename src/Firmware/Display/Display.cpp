@@ -25,6 +25,7 @@
 #include "../Util/Pair.hpp"
 #include "../Util/delay.hpp"
 
+
 #define DC_LOW()	PORTB &= ~_BV(PB1)
 #define DC_HIGH()	PORTB |=  _BV(PB1)
 #define RW_LOW()	PORTB &= ~_BV(PB2)
@@ -56,6 +57,7 @@ Display::~Display() {
 
 }
 
+//for all commands sent to display
 void Display::command(char command_bits) {
 	DC_LOW();
 	RW_LOW();
@@ -71,6 +73,7 @@ void Display::command(char command_bits) {
 
 	DATA_PINS = 0x00;
 }
+
 
 void Display::data(char data_bits) {
 	DC_HIGH();
@@ -97,15 +100,36 @@ void Display::erase() {
 
 void Display::write(const char* input) {
 
+	//size of input we desire to write
+	int insize = strlen(input);
+
+	//iterates through each character to write to a screen "block"
+	for(int i = 0; i < insize; i++){
+		//individual character to write to a "block" position on the board.
+		char to_write = input[i];
+		//calls data, which takes an actual character, i.e. "g", and writes it to the current position on the board.
+		data(to_write);
+		//moves to next position automatically when writing, thus Display::moveCursor does not need to be called
+	}
+
+
+
 }
 
 void Display::moveCursor(const Coordinate coordinate) {
+	//moves cursor left
+	command(0b00000100);
+
+
 	//moves cursor right
 	command(0b00000101);
+
+	
 
 }
 
 Coordinate Display::getCursorPosition() {
+	
 
 }
 
