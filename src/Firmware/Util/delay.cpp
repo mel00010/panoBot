@@ -24,13 +24,13 @@
 
 #define SCALE 16
 
-void delay_s(int seconds) {
+void delay_s(const int seconds) {
 	_delay_us(1000000 * seconds / SCALE);
 }
-void delay_ms(int milliseconds) {
+void delay_ms(const int milliseconds) {
 	_delay_us(1000 * milliseconds / SCALE);
 }
-void delay_us(int microseconds) {
+void delay_us(const int microseconds) {
 	_delay_us(microseconds / SCALE);
 }
 
