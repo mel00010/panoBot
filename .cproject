@@ -13,6 +13,20 @@
                     					
                     <extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
+                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.MachO" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.XCOFF32" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.SOM" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
                     <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
@@ -39,7 +53,7 @@
                         						
                         <toolChain id="cdt.managedbuild.toolchain.gnu.base.1783765644" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.321392491" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.MachO64;org.eclipse.cdt.core.Cygwin_PE;org.eclipse.cdt.core.MachO;org.eclipse.cdt.core.PE;org.eclipse.cdt.core.XCOFF32;org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.SOM" id="cdt.managedbuild.target.gnu.platform.base.321392491" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
                             							
                             <builder buildPath="/panoBot/build/Debug" id="de.marw.cdt.cmake.core.genscriptbuilder.1093875640" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder (portable)" superClass="de.marw.cdt.cmake.core.genscriptbuilder"/>
                             							
@@ -123,6 +137,20 @@
                     					
                     <extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
+                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.MachO" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.XCOFF32" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.SOM" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
                     <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
@@ -149,7 +177,7 @@
                         						
                         <toolChain id="cdt.managedbuild.toolchain.gnu.base.668342118" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.1499039632" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.MachO64;org.eclipse.cdt.core.Cygwin_PE;org.eclipse.cdt.core.MachO;org.eclipse.cdt.core.PE;org.eclipse.cdt.core.XCOFF32;org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.SOM" id="cdt.managedbuild.target.gnu.platform.base.1499039632" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
                             							
                             <builder buildPath="/panoBot/build/Debug" id="de.marw.cdt.cmake.core.genscriptbuilder.1848792454" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder (portable)" superClass="de.marw.cdt.cmake.core.genscriptbuilder"/>
                             							
@@ -221,6 +249,20 @@
                     					
                     <extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser"/>
                     					
+                    <extension id="org.eclipse.cdt.core.MachO64" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.Cygwin_PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.MachO" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.XCOFF32" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
+                    <extension id="org.eclipse.cdt.core.SOM" point="org.eclipse.cdt.core.BinaryParser"/>
+                    					
                     <extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
                     					
                     <extension id="org.eclipse.cdt.core.GASErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
@@ -247,7 +289,7 @@
                         						
                         <toolChain id="cdt.managedbuild.toolchain.gnu.base.380465772" name="Linux GCC" superClass="cdt.managedbuild.toolchain.gnu.base">
                             							
-                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF" id="cdt.managedbuild.target.gnu.platform.base.1428803223" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
+                            <targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.GNU_ELF;org.eclipse.cdt.core.MachO64;org.eclipse.cdt.core.Cygwin_PE;org.eclipse.cdt.core.MachO;org.eclipse.cdt.core.PE;org.eclipse.cdt.core.XCOFF32;org.eclipse.cdt.core.ELF;org.eclipse.cdt.core.SOM" id="cdt.managedbuild.target.gnu.platform.base.1428803223" name="Debug Platform" osList="linux,hpux,aix,qnx" superClass="cdt.managedbuild.target.gnu.platform.base"/>
                             							
                             <builder autoBuildTarget="all" buildPath="/panoBot/build/Release" cleanBuildTarget="clean" enableAutoBuild="false" enableCleanBuild="true" enabledIncrementalBuild="true" id="de.marw.cdt.cmake.core.genscriptbuilder.940843870" incrementalBuildTarget="all" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="CMake Builder (portable)" superClass="de.marw.cdt.cmake.core.genscriptbuilder"/>
                             							
@@ -292,6 +334,8 @@
                                     <listOptionValue builtIn="false" value="F_CPU=16000000"/>
                                     								
                                 </option>
+                                								
+                                <option id="gnu.c.compiler.option.dialect.std.1937995135" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2140066923" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
