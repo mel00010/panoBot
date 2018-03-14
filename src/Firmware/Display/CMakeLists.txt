@@ -11,4 +11,5 @@ target_sources(Display
 
 target_link_libraries(Display
 	PUBLIC
+		Util
 )

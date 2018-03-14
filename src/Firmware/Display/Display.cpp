@@ -20,13 +20,33 @@
 
 #include "Display.hpp"
 
+#include <avr/io.h>
+
 #include "../Util/Pair.hpp"
+#include "../Util/delay.hpp"
+
+#define DC_LOW()	PORTB &= ~_BV(PB1)
+#define DC_HIGH()	PORTB |=  _BV(PB1)
+#define RW_LOW()	PORTB &= ~_BV(PB2)
+#define RW_HIGH()	PORTB |=  _BV(PB2)
+#define E_LOW()		PORTB &= ~_BV(PB3)
+#define E_HIGH()	PORTB |=  _BV(PB3)
+#define CS_LOW()	PORTG &= ~_BV(PG0)
+#define CS_HIGH()	PORTG |=  _BV(PG0)
+#define RES_LOW()	PORTG &= ~_BV(PG1)
+#define RES_HIGH()	PORTG |=  _BV(PG1)
+
+#define DATA_PINS	PORTL
 
 namespace Display {
 
 Display::Display() {
-	//turns the display on, but not cursor or blink
-	command(0b00001100);
+	CS_HIGH();
+	RES_HIGH();
+	DATA_PINS = 0x00;
+	//turns the display on, but not cursor or blink	PORTL = 0xFF;
+
+	command(0b00001111);
 
 }
 
@@ -36,32 +56,42 @@ Display::~Display() {
 
 }
 
-void Display::command(char i) {
-//	C_S = 0; //chip select LOW - active
-//	P1 = i; //data on port
-//	D_C = 0; //data/command select LOW - write
-//	R_W = 0; //read/write select LOW - write
-//	E = 1; //enable HIGH
-//	delayms(1); //delay
-//	E = 0; //enable LOW - data latched
+void Display::command(char command_bits) {
+	DC_LOW();
+	RW_LOW();
+
+	CS_LOW();
+	E_HIGH();
+
+	DATA_PINS = command_bits;
+
+	delay_us(100);
+	E_LOW();
+	CS_HIGH();
+
+	DATA_PINS = 0x00;
 }
 
-void Display::data(char i) {
-//	C_S = 0; //chip select LOW
-//	P1 = i; //data on port
-//	D_C = 1; //data/command s
-//	R_W = 0; //read/write select LOW - write
-//	E = 1; //enable HIGH
-//	delayms(1); //delay
-//	E = 0; //enable LOW - data latched
+void Display::data(char data_bits) {
+	DC_HIGH();
+	RW_LOW();
+
+	CS_LOW();
+	E_HIGH();
+
+	DATA_PINS = data_bits;
+
+	delay_us(100);
+	E_LOW();
+	CS_HIGH();
+
+	DATA_PINS = 0x00;
 }
 //clears the Display
 void Display::erase() {
 	//clears the display. Datasheet defines as:
 	//Write "20H" to DDRAM and set DDRAM address to "00H" from AC.
-	command(0b0000000001);
-
-	
+	command(0b00000001);
 
 }
 
