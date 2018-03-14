@@ -23,27 +23,52 @@
 #include <Setup/Setup.hpp>
 #include <Util/delay.hpp>
 
+//int main(void) {
+//	Display::Display* display = nullptr;
+//
+//	Setup::setup(display);
+//	display->erase();
+//	display->write("Starting panorama...");
+//
+//	/* The Big Loop */
+//	for (;;) {
+//		delay_s(1);
+//
+////		display->erase();
+////		display->write("Focusing camera...");
+//		Camera::focus();
+//
+//		delay_s(1);
+//
+////		display->erase();
+////		display->write("Taking photo 1 / 5...");
+//		Camera::takePhoto();
+//
+//		delay_s(1);
+//	}
+//}
+
+#include <avr/io.h>
+#include <avr/interrupt.h>
+#include <util/delay.h>
 
 int main(void) {
-	Display::Display* display = nullptr;
+	DDRB = 0xFF;
+//set fast pwm, mode 3 from data sheet
+	TCCR1A |= (1 << WGM01) | (1 << WGM00);
+	TCCR1A |= (1 << COM2A0) | (1 << CS22); // prescaler of 64
 
-	Setup::setup(display);
+	ICR1L = 4999;
 
-	/* The Big Loop */
-	for (;;) {
-		display->write("Starting panorama...");
-		delay_s(1);
+	OCR1A = 4999 - 2000;
 
-		display->erase();
-		display->write("Focusing camera...");
-		Camera::focus();
+	OCR1A = ICR1L - 100;
+	delay_ms(100);
+	OCR1A = ICR1L - 2200;
+	delay_ms(100);
 
-		delay_s(1);
+	while (1) {
 
-		display->erase();
-		display->write("Taking photo 1 / 5...");
-		Camera::takePhoto();
-
-		delay_s(1);
 	}
+
 }

@@ -335,7 +335,7 @@
                                     								
                                 </option>
                                 								
-                                <option id="gnu.c.compiler.option.dialect.std.1937995135" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
+                                <option id="gnu.c.compiler.option.dialect.std.1937995135" name="Language standard" superClass="gnu.c.compiler.option.dialect.std" useByScannerDiscovery="true" value="gnu.c.compiler.dialect.default" valueType="enumerated"/>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.2140066923" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
