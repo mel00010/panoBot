@@ -4,9 +4,10 @@ add_executable_avr(panoBot "panoBot.cpp")
 
 target_link_libraries(panoBot
 	PUBLIC
-		Setup
 		Camera
 		Display
+		Servo
+		Setup
 		Util
 		m # Math library
 		c # C standard library

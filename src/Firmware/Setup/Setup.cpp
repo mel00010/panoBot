@@ -47,6 +47,26 @@ void setup(Display::Display* display) {
 	DDRH |= _BV(PH1); // Set 16 (PH1) to output
 	DDRH |= _BV(PH0); // Set 17 (PH0) to output
 
+	/* Servo setup */
+	DDRB |= _BV(PB5); // Set pin 11 (PB5) as output for OC1A
+	DDRB |= _BV(PB6); // Set pin 12 (PB6) as output for OC1B
+	DDRE |= _BV(PE3); // Set pin 5  (PE3) as output for OC3A
+	DDRE |= _BV(PE4); // Set pin 2  (PE4) as output for OC3A
+
+	TCCR1A = _BV(COM1A1) | _BV(COM1B1) | _BV(WGM11);
+	TCCR1B = _BV(WGM13) | _BV(WGM12) | _BV(CS10);
+	TCCR3A = _BV(COM3A1) | _BV(COM3B1) | _BV(WGM31);
+	TCCR3B = _BV(WGM33) | _BV(WGM32) | _BV(CS30);
+
+
+	ICR1 = 20000; // Count to 20000 for a 20ms period or 50 Hz cycle
+	ICR3 = 20000; // Count to 20000 for a 20ms period or 50 Hz cycle
+	OCR1A = 1500; // Start in the middle between 1280 & 1720
+	OCR1B = 1500; // Start in the middle between 1280 & 1720
+	OCR1C = 1500;
+	OCR3A = 1500;
+	OCR3B = 1500;
+//	OCR2A  = 1500;
 }
 
 } /* namespace Setup */

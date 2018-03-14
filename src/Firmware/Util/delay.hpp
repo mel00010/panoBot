@@ -20,12 +20,10 @@
 #ifndef SRC_FIRMWARE_UTIL_DELAY_HPP_
 #define SRC_FIRMWARE_UTIL_DELAY_HPP_
 
-#include <util/delay.h>
-#define SCALE 16
 
-#define delay_s(seconds) _delay_ms(((1000 * seconds) / SCALE))
-#define delay_ms(milliseconds) _delay_ms((milliseconds / SCALE))
-#define delay_us(microseconds) _delay_us((microseconds / SCALE))
+void delay_s(int seconds);
+void delay_ms(int milliseconds);
+void delay_us(int microseconds);
 
 
 #endif /* SRC_FIRMWARE_UTIL_DELAY_HPP_ */
