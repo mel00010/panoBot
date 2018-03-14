@@ -142,11 +142,11 @@ function(add_executable_avr NAME)
         # generate the .hex file
         add_custom_command(
                 OUTPUT ${NAME}.hex
-#                COMMAND ${AVRSTRIP} "${NAME}.elf"
-                COMMAND ${OBJCOPY} -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0 "${NAME}.elf" "${NAME}.eep"
-                COMMAND ${OBJCOPY} -O ihex -R .eeprom "${NAME}.elf" "${NAME}.hex"
+                COMMAND ${AVRSTRIP} "${NAME}.elf" -o "${NAME}_stripped.elf"
+                COMMAND ${OBJCOPY} -O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0 "${NAME}_stripped.elf" "${NAME}_stripped.eep"
+                COMMAND ${OBJCOPY} -O ihex -R .eeprom "${NAME}_stripped.elf" "${NAME}.hex"
                 COMMAND ${AVRSTRIP} "${NAME}.hex"
-                COMMAND ${AVRSIZE} --mcu=${MCU} -C --format=avr "${NAME}.elf"
+                COMMAND ${AVRSIZE} --mcu=${MCU} -C --format=avr "${NAME}_stripped.elf"
                 DEPENDS ${NAME})
         add_custom_target(${NAME}-strip ALL DEPENDS ${NAME}.hex)
 
