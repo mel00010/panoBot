@@ -47,6 +47,10 @@ class Display {
 		void command(char i);
 		void data(char i);
 
+	private:
+		Coordinate cursor;
+		
+
 };
 
 } /* namespace Display */
