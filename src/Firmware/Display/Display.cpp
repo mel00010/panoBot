@@ -22,6 +22,7 @@
 
 #include <avr/io.h>
 #include <string.h>
+#include <util/delay.h>
 
 #include "../Util/Pair.hpp"
 #include "../Util/delay.hpp"
@@ -131,11 +132,11 @@ void Display::write(const char* input) {
 void Display::moveCursor(const Coordinate coordinate) {
 
 	//cursor position
-	int x = coordinate.x;
+	size_t x = cursor.x;
 	//which line
-	int y = coordinate.y;
-	if (coordinate.y == 2){
-		command(0b0000010010); //2nd line display shift enable
+	size_t y = cursor.y;
+	if (cursor.y == 2){
+		command(0b00000101); //2nd line display shift enable
 		command(0b00000111); //display shift "right"(down)
 
 		for(int i = 0; i < x; i++){
@@ -181,6 +182,8 @@ void Display::moveCursor(const Coordinate coordinate) {
 }
 
 Coordinate Display::getCursorPosition() {
+	//Coordinate object cursor is already defined
+	return cursor
 
 }
 
