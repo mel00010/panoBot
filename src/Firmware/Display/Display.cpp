@@ -132,9 +132,9 @@ void Display::write(const char* input) {
 void Display::moveCursor(const Coordinate coordinate) {
 
 	//cursor position
-	size_t x = cursor.x;
+	size_t x = this->cursor.x;
 	//which line
-	size_t y = cursor.y;
+	size_t y = this->cursor.y;
 	if (cursor.y == 2){
 		command(0b00000101); //2nd line display shift enable
 		command(0b00000111); //display shift "right"(down)
@@ -183,7 +183,7 @@ void Display::moveCursor(const Coordinate coordinate) {
 
 Coordinate Display::getCursorPosition() {
 	//Coordinate object cursor is already defined
-	return cursor
+	return this->cursor;
 
 }
 
