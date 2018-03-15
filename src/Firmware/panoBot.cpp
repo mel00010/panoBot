@@ -20,8 +20,13 @@
 
 #include <Camera/Camera.hpp>
 #include <Display/Display.hpp>
+#include <Servo/Servo.hpp>
 #include <Setup/Setup.hpp>
 #include <Util/delay.hpp>
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <stddef.h>
 
 int main(void) {
 	Display::Display* display = nullptr;
@@ -45,30 +50,81 @@ int main(void) {
 		display->write("Taking photo 1 / 5...");
 		Camera::takePhoto();
 
+		display->erase();
+		display->write("Moving...");
+
+		Servo::setServoSpeed(SERVO0, 100);
+		Servo::setServoSpeed(SERVO1, -100);
+		Servo::setServoPosition(SERVO2, 230);
 		delay_ms(1000);
+		Servo::setServoSpeed(SERVO0, 0);
+		Servo::setServoSpeed(SERVO1, 0);
+		Servo::setServoPosition(SERVO2, 90);
+		delay_ms(500);
 
 		display->erase();
 		display->write("Taking photo 2 / 5...");
 		Camera::takePhoto();
 
+		display->erase();
+		display->write("Moving...");
+
+		Servo::setServoSpeed(SERVO0, 100);
+		Servo::setServoSpeed(SERVO1, -100);
+		Servo::setServoPosition(SERVO2, 270);
 		delay_ms(1000);
+		Servo::setServoSpeed(SERVO0, 0);
+		Servo::setServoSpeed(SERVO1, 0);
+		Servo::setServoPosition(SERVO2, 90);
+		delay_ms(500);
 
 		display->erase();
 		display->write("Taking photo 3 / 5...");
 		Camera::takePhoto();
 
+		display->erase();
+		display->write("Moving...");
+
+		Servo::setServoSpeed(SERVO0, 100);
+		Servo::setServoSpeed(SERVO1, -100);
+		Servo::setServoPosition(SERVO2, 270);
 		delay_ms(1000);
+		Servo::setServoSpeed(SERVO0, 0);
+		Servo::setServoSpeed(SERVO1, 0);
+		Servo::setServoPosition(SERVO2, 90);
+		delay_ms(500);
 
 		display->erase();
 		display->write("Taking photo 4 / 5...");
 		Camera::takePhoto();
 
+		display->erase();
+		display->write("Moving...");
+
+		Servo::setServoSpeed(SERVO0, 100);
+		Servo::setServoSpeed(SERVO1, -100);
+		Servo::setServoPosition(SERVO2, 270);
 		delay_ms(1000);
+		Servo::setServoSpeed(SERVO0, 0);
+		Servo::setServoSpeed(SERVO1, 0);
+		Servo::setServoPosition(SERVO2, 90);
+		delay_ms(500);
 
 		display->erase();
 		display->write("Taking photo 5 / 5...");
 		Camera::takePhoto();
 
+		display->erase();
+		display->write("Moving...");
+
+		Servo::setServoSpeed(SERVO0, 100);
+		Servo::setServoSpeed(SERVO1, -100);
+		Servo::setServoPosition(SERVO2, 0);
 		delay_ms(1000);
+		Servo::setServoSpeed(SERVO0, 0);
+		Servo::setServoSpeed(SERVO1, 0);
+		Servo::setServoPosition(SERVO2, 90);
+		delay_ms(500);
 	}
 }
+

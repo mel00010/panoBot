@@ -1,5 +1,5 @@
 /*******************************************************************************
- * delay.cpp
+ * Servo.hpp
  * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panoBot.
@@ -17,21 +17,29 @@
  * You should have received a copy of the GNU General Public License
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
+#ifndef SRC_FIRMWARE_SERVO_SERVO_HPP_
+#define SRC_FIRMWARE_SERVO_SERVO_HPP_
 
-#include "delay.hpp"
+#include <stddef.h>
+#include <stdint.h>
 
-#include <util/delay.h>
+#define SERVO0 0
+#define SERVO1 1
+#define SERVO2 2
 
-#define SCALE 10
 
-void delay_s(int seconds) {
-	while (seconds--) {
-		_delay_ms(1000 / SCALE);
-	}
-}
-void delay_ms(int milliseconds) {
-	while (milliseconds--) {
-		_delay_us(1000 / SCALE);
-	}
-}
+namespace Servo {
 
+void setServoPosition(int servo, double position);
+void setServoSpeed(int servo, double rpm);
+//void angle_feedback();
+//void control360();
+//void feedback360();
+//float get_angle(uint8_t dCycle);
+
+} /* namespace Servo */
+
+
+
+
+#endif /* SRC_FIRMWARE_SERVO_SERVO_HPP_ */
