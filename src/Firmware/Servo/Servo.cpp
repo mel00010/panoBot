@@ -19,12 +19,19 @@
  *******************************************************************************/
 
 #include "Servo.hpp"
+#include "PIDObj.hpp"
 
 #include <avr/io.h>
 #include <math.h>
 #include <util/delay.h>
 
 namespace Servo {
+
+void move(int desiredPos, int desiredServo, PIDObj pobj){
+    while(!pobj.reachedTarget()){
+        setServoSpeed(desiredServo, pobj.pidCalc(desiredPos, getServoPosition()));
+    }
+}
 
 void setServoPosition(int servo, double position) {
 	const double scale = 5.55555555556;
@@ -74,6 +81,9 @@ void setServoSpeed(int servo, double rpm) {
 		default:
 			break;
 	}
+}
+
+int getServoPosition(){
 }
 
 ////controls the angle of sero
