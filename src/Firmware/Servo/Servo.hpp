@@ -22,6 +22,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include "PIDObj.hpp"
 
 #define SERVO0 0
 #define SERVO1 1
@@ -30,6 +31,7 @@
 
 namespace Servo {
 
+void move(int desiredPos, int desiredServo, PIDObj pobj);
 void setServoPosition(int servo, double position);
 void setServoSpeed(int servo, double rpm);
 //void angle_feedback();

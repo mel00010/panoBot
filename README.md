@@ -1,5 +1,12 @@
 # panoBot
 
+## Summary of main responsiblities
+- John (OLED display)
+- Ben (PID loop)
+- Zach (Servo movement/control)
+- Justin (Button control)
+- Mel (Hardware, main control flow)
+
 ## Update Monday March 12th
 - Entire directory structure refactored to add some consistency
 - Wrote Camera library to control the camera

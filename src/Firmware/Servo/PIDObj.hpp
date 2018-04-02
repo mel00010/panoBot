@@ -6,6 +6,7 @@ class PIDObj{
         PIDObj(int tcP, int tcI, int tcD, int tintegralActiveZone, int tmaxIntAdjust);  
 		int pidCalc(int desiredPos, int position);
         int angleToServoUnit(int angle, int dMax, int dMin, int unitsPerCircle);
+        int reachedTarget();
 	private:
 		int integralTerm();
 		int derivativeTerm();
