@@ -1,6 +1,6 @@
 /*******************************************************************************
  * Servo.cpp
- * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
+ * Copyright (C) 2018 Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panoBot.
  *

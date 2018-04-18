@@ -34,6 +34,7 @@ namespace Servo {
 void move(int desiredPos, int desiredServo, PIDObj pobj);
 void setServoPosition(int servo, double position);
 void setServoSpeed(int servo, double rpm);
+int getServoPosition();
 //void angle_feedback();
 //void control360();
 //void feedback360();
