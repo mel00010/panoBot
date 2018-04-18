@@ -1,5 +1,5 @@
 /*******************************************************************************
- * MainWindow.cpp
+ * MainWindow.hpp
  * Copyright (C) 2018 Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panoBot.
@@ -17,35 +17,29 @@
  * You should have received a copy of the GNU General Public License
  * along with panoBot.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
+#ifndef SRC_GUI_MAINWINDOW_HPP_
+#define SRC_GUI_MAINWINDOW_HPP_
 
-#include "MainWindow.hpp"
+#include <gtkmm/button.h>
+#include <gtkmm/window.h>
+#include <gtkmm/grid.h>
+#include <string>
 
-#include <iostream>
+class MainWindow: public Gtk::Window {
+	public:
+		MainWindow();
+		virtual ~MainWindow();
+	protected:
+		/*Main title window*/
+		std::string _title;
 
-MainWindow::MainWindow() {
+		/*Container Widgets*/
+		Gtk::Grid m_grid;
 
-	set_border_width(100);
+		/*Widgets*/
+		Gtk::Button m_button_0;
+		Gtk::Button m_button_1;
 
-	m_button_0.add_label("Button 0");
-	m_button_1.add_label("Button 1");
+};
 
-	/*when button receives click signal, calls
-	 this function*/
-	m_button_0.signal_clicked().connect([this] {
-		std::cout << "m_button_0 pressed " << std::endl;
-	});
-	m_button_1.signal_clicked().connect([this] {
-		std::cout << "m_button_1 pressed" << std::endl;
-	});
-
-	m_grid.add(m_button_0);
-	m_grid.add(m_button_1);
-
-	m_grid.show_all();
-	add(m_grid);
-
-}
-
-MainWindow::~MainWindow() {
-
-}
+#endif /* SRC_GUI_MAINWINDOW_HPP_ */
