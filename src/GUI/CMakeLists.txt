@@ -1,6 +1,9 @@
 find_package(Protobuf REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GTKMM gtkmm-3.0)
+include(GNUInstallDirs)
+add_definitions(-DGETTEXT_PACKAGE="${PROJECT_NAME}")
+add_definitions(-DPROGRAMNAME_LOCALEDIR="${DATADIR}/locale")
 
 include_directories(
 	${GTKMM_INCLUDE_DIRS}

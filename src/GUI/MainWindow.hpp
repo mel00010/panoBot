@@ -22,7 +22,11 @@
 
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
+#include <gtkmm/box.h>
 #include <gtkmm/grid.h>
+#include <gtkmm/entry.h>
+#include <gtkmm/comboboxtext.h>
+#include <gtkmm/liststore.h>
 #include <string>
 
 class MainWindow: public Gtk::Window {
@@ -34,12 +38,26 @@ class MainWindow: public Gtk::Window {
 		std::string _title;
 
 		/*Container Widgets*/
-		Gtk::Grid m_grid;
+		Gtk::Grid grid;
 
 		/*Widgets*/
-		Gtk::Button m_button_0;
-		Gtk::Button m_button_1;
+		Gtk::Button button_0;
+		Gtk::Button button_1;
 
+		Gtk::ComboBoxText sensor;
+		Gtk::Label sensor_label;
+
+		Gtk::ComboBoxText lens_type;
+		Gtk::Label lens_type_label;
+
+		Gtk::Entry focal_length;
+		Gtk::Label focal_length_label;
+
+		Gtk::Entry pano_width;
+		Gtk::Label pano_width_label;
+
+		Gtk::Entry pano_height;
+		Gtk::Label pano_height_label;
 };
 
 #endif /* SRC_GUI_MAINWINDOW_HPP_ */

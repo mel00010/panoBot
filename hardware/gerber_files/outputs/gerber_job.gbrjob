@@ -1,0 +1,13 @@
+G04 Gerber job file.*
+%TF.FileFunction,JobInfo*%
+%TF.GenerationSoftware,Autodesk,EAGLE,9.0.0*%
+%TF.CreationDate,2018-06-13T06:25:04Z*%
+%TF.Part,Single*%
+%MOMM*%
+%TJ.B_Owner,Mel McCalla <melmccalla@gmail.com>*%
+%TJ.B_ID,main_smd*%
+%TJ.B_LayerNum,4*%
+%TJ.B_Thickness,0.760000*%
+%TJ.B_Size_X,269.820000*%
+%TJ.B_Size_Y,110.270000*%
+M02*

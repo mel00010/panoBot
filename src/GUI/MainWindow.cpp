@@ -20,30 +20,60 @@
 
 #include "MainWindow.hpp"
 
+#include <glibmm/i18n.h>
+#include <functional>
 #include <iostream>
 
 MainWindow::MainWindow() {
+	set_size_request(200, 100);
+	set_title("PanoBot");
 
-	set_border_width(100);
+	add(grid);
 
-	m_button_0.add_label("Button 0");
-	m_button_1.add_label("Button 1");
+	sensor_label.set_text(_("Sensor Type   "));
+	sensor.append(_("EF"));
+	sensor.append(_("EF-S"));
 
-	/*when button receives click signal, calls
-	 this function*/
-	m_button_0.signal_clicked().connect([this] {
-		std::cout << "m_button_0 pressed " << std::endl;
+	lens_type_label.set_text(_("Lens Type"));
+	lens_type.append(_("EF"));
+	lens_type.append(_("EF-S"));
+
+
+	focal_length.set_max_length(50);
+	focal_length_label.set_text(_("Focal length"));
+
+	pano_width.set_max_length(50);
+	pano_width_label.set_text(_("Panorama width"));
+
+	pano_height.set_max_length(50);
+	pano_height_label.set_text(_("Panorama height"));
+
+	button_0.add_label(_("Button 0"));
+	button_0.signal_clicked().connect([this] {
+		std::cout << _("Button 0 pressed ") << std::endl;
+		std::cout << sensor.get_active_text() << std::endl;
 	});
-	m_button_1.signal_clicked().connect([this] {
-		std::cout << "m_button_1 pressed" << std::endl;
+
+	button_1.add_label(_("Button 1"));
+	button_1.signal_clicked().connect([this] {
+		std::cout << _("Button 1 pressed") << std::endl;
 	});
+	grid.set_row_spacing(20);
+	grid.set_column_spacing(1);
+	grid.attach(sensor_label, 0, 0, 1, 1);
+	grid.attach(sensor, 1, 0, 1, 1);
+	grid.attach(lens_type_label, 0, 1, 1, 1);
+	grid.attach(lens_type, 1, 1, 1, 1);
+	grid.attach(focal_length_label, 0, 2, 1, 1);
+	grid.attach(focal_length, 1, 2, 1, 1);
+	grid.attach(pano_width_label, 0, 3, 1, 1);
+	grid.attach(pano_width, 1, 3, 1, 1);
+	grid.attach(pano_height_label, 0, 4, 1, 1);
+	grid.attach(pano_height, 1, 4, 1, 1);
+	grid.attach(button_0, 0, 5, 1, 1);
+	grid.attach(button_1, 0, 6, 1, 1);
 
-	m_grid.add(m_button_0);
-	m_grid.add(m_button_1);
-
-	m_grid.show_all();
-	add(m_grid);
-
+	show_all_children();
 }
 
 MainWindow::~MainWindow() {

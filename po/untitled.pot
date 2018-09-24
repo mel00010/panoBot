@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-18 19:29-0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../src/GUI/MainWindow.cpp:33
+msgid "Sensor Type   "
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:34 ../src/GUI/MainWindow.cpp:38
+msgid "EF"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:35 ../src/GUI/MainWindow.cpp:39
+msgid "EF-S"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:37
+msgid "Lens Type"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:43
+msgid "Focal length"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:46
+msgid "Panorama width"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:49
+msgid "Panorama height"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:51
+msgid "Button 0"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:53
+msgid "Button 0 pressed "
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:57
+msgid "Button 1"
+msgstr ""
+
+#: ../src/GUI/MainWindow.cpp:59
+msgid "Button 1 pressed"
+msgstr ""
